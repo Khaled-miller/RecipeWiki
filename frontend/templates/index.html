@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RecipeWiki - Discover & Share Recipes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="{{ url_for('static', filename='logo.png') }}" alt="RecipeWiki Logo" style="width: 50px; height: 50px; border-radius: 8px;">
+                    <h1>RecipeWiki</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#" id="home-link"><i class="fas fa-home"></i> Home</a></li>
+                        <li><a href="#recipes-section"><i class="fas fa-book-open"></i> Recipes</a></li>
+                        <li><a href="#favorites-section" id="favorites-link"><i class="fas fa-heart"></i> Favorites</a></li>
+                        <li><a href="#shopping-section-wrapper"><i class="fas fa-shopping-cart"></i> Shopping</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h2>Cook With What You Have</h2>
+                <p>Find recipes that maximize the ingredients you already own, helping you fight food waste and create delicious meals.</p>
+                <form id="search-form" class="search-box">
+                    <input type="text" id="search-input" placeholder="Enter ingredients you have on hand...">
+                    <button type="submit" aria-label="Search"><i class="fas fa-search"></i></button>
+                </form>
+                <div id="filter-controls">
+                    <select id="cuisine-filter" class="filter-select">
+                        <option value="">Any Cuisine</option>
+                        </select>
+                     <select id="time-filter" class="filter-select">
+                        <option value="">Any Time</option>
+                        <option value="15">Quick Meal (under 15 min)</option>
+                        <option value="35">Standard Meal (under 35 min)</option>
+                    </select>
+                    <input type="text" id="exclude-filter" class="filter-input" placeholder="Exclude ingredients (e.g. nuts)">
+                </div>
+            </div>
+        </section>
+
+        <section class="seasonal-section" id="seasonal-section">
+            <div class="container" id="seasonal-container"></div>
+        </section>
+
+        <section class="recipes-section" id="recipes-section">
+            <div class="container">
+                <h2 class="section-title">Recipes</h2>
+                <div class="recipe-grid" id="recipe-grid">
+                    <p>Search for recipes to see results here!</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="favorites-section" id="favorites-section">
+            <div class="container">
+                <h2 class="section-title">My Favorites</h2>
+                <div class="recipe-grid" id="favorites-grid"></div>
+            </div>
+        </section>
+        
+        <div id="shopping-section-wrapper">
+            <section class="shopping-form-section hidden" id="shopping-form-section">
+                <div class="container">
+                    <h2 class="section-title">Create a Shopping List</h2>
+                    <form id="shopping-list-form" class="shopping-content">
+                        <h3 id="shopping-form-title">For Recipe: ...</h3>
+                        <input type="hidden" id="shopping-list-recipe-id">
+                        <label for="user-ingredients">Enter ingredients you already have (comma-separated):</label>
+                        <input type="text" id="user-ingredients" class="shopping-input" placeholder="e.g., olive oil, salt, pepper">
+                        <button type="submit" class="shopping-button">Generate List</button>
+                    </form>
+                </div>
+            </section>
+
+            <section class="shopping-section hidden" id="shopping-list-display-section">
+                <div class="container">
+                    <div class="shopping-content" id="shopping-list-result">
+                        <div class="shopping-header">
+                            <h3 id="shopping-list-recipe-title">My Shopping List</h3>
+                            <button class="btn-share" id="share-button"><i class="fas fa-share-alt"></i> Share List</button>
+                        </div>
+                        <ul class="shopping-list" id="missing-ingredients-list"></ul>
+                        <h4>Suggested Local Markets:</h4>
+                        <ul class="shopping-list" id="local-markets-list"></ul>
+                        <div class="shopping-total" id="shopping-total"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <div class="modal" id="recipe-modal">
+        <div class="modal-content" id="modal-content-area">
+            <span class="close-modal" id="modal-close-btn">&times;</span>
+            <div class="modal-header" id="modal-image">
+                <div class="modal-overlay">
+                    <h2 class="modal-title" id="modal-title"></h2>
+                    <div class="modal-meta" id="modal-meta"></div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="modal-buttons" id="modal-buttons-container"></div>
+                
+                <div class="modal-section">
+                    <div class="view-mode">
+                        <h3>Ingredients</h3>
+                        <ul class="ingredients-list" id="modal-ingredients"></ul>
+                    </div>
+                    <div class="edit-mode">
+                        <label for="update-ingredients">Ingredients (one per line):</label>
+                        <textarea id="update-ingredients" class="update-textarea"></textarea>
+                    </div>
+                </div>
+                
+                <div class="modal-section">
+                    <div class="view-mode">
+                        <h3>Instructions</h3>
+                        <ol class="instructions-list" id="modal-instructions"></ol>
+                    </div>
+                    <div class="edit-mode">
+                        <label for="update-instructions">Instructions:</label>
+                        <textarea id="update-instructions" class="update-textarea"></textarea>
+                    </div>
+                </div>
+                
+                <div class="modal-section" id="modal-details-section">
+                    <div class="view-mode">
+                        <h3>Details</h3>
+                         <div class="recipe-tags" id="modal-tags" style="margin-top: 15px;"></div>
+                    </div>
+                    <div class="edit-mode">
+                        <label for="update-title">Title:</label>
+                        <input type="text" id="update-title" class="update-input">
+                        
+                        <label for="update-image">Image URL:</label>
+                        <input type="text" id="update-image" class="update-input">
+
+                        <div class="update-checkbox-group">
+                            <input type="checkbox" id="update-is-vegan"> <label for="update-is-vegan">Vegan</label>
+                            <input type="checkbox" id="update-is-dairy-free"> <label for="update-is-dairy-free">Dairy-Free</label>
+                            <input type="checkbox" id="update-is-gluten-free"> <label for="update-is-gluten-free">Gluten-Free</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal hidden" id="joke-modal">
+        <div class="joke-modal-content">
+            <span class="close-modal" id="joke-modal-close-btn">&times;</span>
+            <div class="joke-modal-body">
+                <i class="fas fa-check-circle joke-icon"></i>
+                <h3 id="joke-modal-message"></h3>
+                <p id="joke-modal-joke"></p>
+                <button id="joke-modal-ok-btn" class="ok-button">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="copyright">
+                &copy; 2025 RecipeWiki. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+
+    <section id="waste-game-section">
+        <div class="container">
+            <h2 class="section-title">Food Waste Sorting Challenge!</h2>
+            <p class="section-subtitle">Drag the food scraps into the correct bin to learn about waste management and earn points.</p>
+
+            <div id="game-feedback">
+                <p>Score: <span id="game-score">0</span></p>
+                <p id="game-message">Let's get started!</p>
+            </div>
+
+            <div id="scraps-container">
+                <div class="food-scrap" id="scrap-1" draggable="true" data-category="compost">Apple Core</div>
+                <div class="food-scrap" id="scrap-2" draggable="true" data-category="reuse">Stale Bread</div>
+                <div class="food-scrap" id="scrap-3" draggable="true" data-category="trash">Plastic Wrap</div>
+                <div class="food-scrap" id="scrap-4" draggable="true" data-category="compost">Vegetable Peels</div>
+                <div class="food-scrap" id="scrap-5" draggable="true" data-category="trash">Chicken Bones</div>
+                <div class="food-scrap" id="scrap-6" draggable="true" data-category="reuse">Leftover Rice</div>
+                <div class="food-scrap" id="scrap-7" draggable="true" data-category="compost">Coffee Grounds</div>
+                <div class="food-scrap" id="scrap-8" draggable="true" data-category="reuse">Wilting Herbs</div>
+            </div>
+
+            <div id="bins-container">
+                <div class="waste-bin compost" id="bin-compost" data-category="compost">
+                    <h3><i class="fas fa-leaf"></i> Compost</h3>
+                </div>
+                <div class="waste-bin reuse" id="bin-reuse" data-category="reuse">
+                    <h3><i class="fas fa-sync-alt"></i> Reuse</h3>
+                </div>
+                <div class="waste-bin trash" id="bin-trash" data-category="trash">
+                    <h3><i class="fas fa-trash"></i> Trash</h3>
+                </div>
+            </div>
+
+            <button id="reset-game-btn" class="btn">Play Again</button>
+        </div>
+    </section>
+</body>
+</html>

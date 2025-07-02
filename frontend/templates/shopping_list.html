@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping List for {{ list_data.recipe_title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="shopping-list-page-container">
+        <div class="shopping-content">
+            <div class="shopping-header">
+                <h3>Shopping List for {{ list_data.recipe_title }}</h3>
+            </div>
+            <ul class="shopping-list">
+                {% for item in list_data.shopping_list %}
+                <li class="shopping-item">
+                    <span class="item-name">{{ item.ingredient }}</span>
+                    <span class="item-price">{{ item.price }}</span>
+                </li>
+                {% endfor %}
+            </ul>
+            
+            {% if list_data.local_markets %}
+            <h4 class="markets-title">Suggested Local Markets in {{ list_data.country }}:</h4>
+            <ul class="shopping-list">
+                {% for market in list_data.local_markets %}
+                <li class="shopping-item">
+                    <span class="item-name">{{ market }}</span>
+                </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+
+            <div class="list-footer">
+                Prices estimated in {{ list_data.currency }}. Happy shopping!
+            </div>
+        </div>
+    </div>
+</body>
+</html>

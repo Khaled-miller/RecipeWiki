@@ -1,0 +1,226 @@
+{
+  "United States": [
+    "Walmart",
+    "Kroger",
+    "Safeway",
+    "Publix",
+    "Whole Foods Market"
+  ],
+  "Canada": [
+    "Loblaws",
+    "Sobeys",
+    "Metro",
+    "No Frills",
+    "Real Canadian Superstore"
+  ],
+  "United Kingdom": [
+    "Tesco",
+    "Sainsbury's",
+    "Asda",
+    "Morrisons",
+    "Waitrose"
+  ],
+  "Germany": [
+    "Aldi",
+    "Lidl",
+    "Edeka",
+    "Rewe",
+    "Kaufland"
+  ],
+  "France": [
+    "Carrefour",
+    "Auchan",
+    "Intermarché",
+    "Leclerc",
+    "Casino"
+  ],
+  "Australia": [
+    "Woolworths",
+    "Coles",
+    "Aldi",
+    "IGA",
+    "Foodland"
+  ],
+  "Japan": [
+    "Aeon",
+    "Ito-Yokado",
+    "Seiyu",
+    "Life",
+    "Daiei"
+  ],
+  "South Korea": [
+    "E-Mart",
+    "Lotte Mart",
+    "Homeplus",
+    "Costco Korea",
+    "GS Supermarket"
+  ],
+  "Sweden": [
+    "ICA",
+    "Coop",
+    "Hemköp",
+    "Willys",
+    "Lidl"
+  ],
+  "Norway": [
+    "Rema 1000",
+    "Kiwi",
+    "Coop Prix",
+    "Bunnpris",
+    "Meny"
+  ],
+  "Switzerland": [
+    "Migros",
+    "Coop",
+    "Spar",
+    "Denner",
+    "Volg"
+  ],
+  "Netherlands": [
+    "Albert Heijn",
+    "Jumbo",
+    "Lidl",
+    "Plus",
+    "Spar"
+  ],
+  "Finland": [
+    "K-Citymarket",
+    "Prisma",
+    "S-Market",
+    "Lidl",
+    "Tokmanni"
+  ],
+  "New Zealand": [
+    "Countdown",
+    "New World",
+    "Pak'nSave",
+    "FreshChoice",
+    "Four Square"
+  ],
+  "Austria": [
+    "Billa",
+    "Spar",
+    "Hofer",
+    "Merkur",
+    "Penny"
+  ],
+  "Belgium": [
+    "Delhaize",
+    "Carrefour",
+    "Colruyt",
+    "Aldi",
+    "Lidl"
+  ],
+  "Denmark": [
+    "Føtex",
+    "Netto",
+    "Bilka",
+    "Rema 1000",
+    "Brugsen"
+  ],
+  "Ireland": [
+    "Dunnes Stores",
+    "SuperValu",
+    "Tesco",
+    "Aldi",
+    "Lidl"
+  ],
+  "Singapore": [
+    "NTUC FairPrice",
+    "Sheng Siong",
+    "Cold Storage",
+    "Giant",
+    "Prime Supermarket"
+  ],
+  "Italy": [
+    "Esselunga",
+    "Conad",
+    "Coop",
+    "Carrefour Italia",
+    "Eurospin"
+  ],
+  "Portugal": [
+    "Continente",
+    "Pingo Doce",
+    "Intermarché",
+    "Lidl",
+    "Minipreço"
+  ],
+  "Spain": [
+    "Mercadona",
+    "Carrefour",
+    "Dia",
+    "Alcampo",
+    "Eroski"
+  ],
+  "Luxembourg": [
+    "Cactus",
+    "Auchan",
+    "Delhaize",
+    "Aldi",
+    "Lidl"
+  ],
+  "Israel": [
+    "Shufersal",
+    "Rami Levy",
+    "Victory",
+    "Yeinot Bitan",
+    "Mega"
+  ],
+  "Iceland": [
+    "Bónus",
+    "Krónan",
+    "Hagkaup",
+    "Nettó",
+    "Samkaup"
+  ],
+  "Greece": [
+    "Sklavenitis",
+    "AB Vassilopoulos",
+    "My Market",
+    "Lidl",
+    "Masoutis"
+  ],
+  "Slovenia": [
+    "Mercator",
+    "Spar",
+    "Hofer",
+    "Tuš",
+    "Eurospin"
+  ],
+  "Czech Republic": [
+    "Albert",
+    "Kaufland",
+    "Lidl",
+    "Penny Market",
+    "Tesco"
+  ],
+  "Slovakia": [
+    "Kaufland",
+    "Tesco",
+    "Lidl",
+    "Billa",
+    "COOP Jednota"
+  ],
+  "Estonia": [
+    "Selver",
+    "Rimi",
+    "Coop",
+    "Maxima",
+    "Prisma"
+  ],
+  "Lithuania": [
+    "Maxima",
+    "Iki",
+    "Rimi",
+    "Lidl",
+    "Norfa"
+  ],
+  "Latvia": [
+    "Rimi",
+    "Maxima",
+    "Lidl",
+    "Top",
+    "Mego"
+  ]
+}

@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=65", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "RecipeWiki"
+version = "1.0.0"
+description = "Recipe wiki to find and store favourite recipes"
+authors = [
+  {name = "Natasha Kanth", email = "n.kanth@student.vu.nl"},
+  {name = "Khaled Altahan", email = "k.altahan@student.vu.nl"},
+  {name = "Sam-Arjuna Friedzoon Manders", email = "s.f.manders@student.vu.nl"},
+  {name = "Lois Sturkenboom", email = "l.r.sturkenboom@student.vu.nl"}
+]
+requires-python = ">=3.8"
+
+dependencies = [
+  # main dependencies go here if you want
+]
+
+[tool.setuptools]
+packages = ["RecipeWiki"]
+
+[tool.setuptools.package-data]
+Feast = ["py.typed"]
+
+[tool.flake8]
+max-line-length = 160
