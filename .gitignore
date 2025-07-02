@@ -1,0 +1,29 @@
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual Environments
+.venv/
+venv/
+env/
+.ap_tests/
+
+# Environment variables
+.env
+*.env
+
+# OS-generated files
+### specify files and folders to exclude from version control ###ap/
+ap/
+.DS_Store
+arjuna-venv/
+/.ap_tests/lib/python3.8/site-packages/MarkupSafe-2.1.5.dist-info
+/.ap_tests/lib/python3.8/site-packages
+/.ap_tests/lib/python3.8
+/.ap_tests
+/.ap_tests/bin
+*.csh
+/.ap_tests
